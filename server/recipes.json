@@ -1,0 +1,28 @@
+{
+  "recipes": [
+    {
+      "id": "r1",
+      "title": "Spaghetti Carbonara",
+      "description": "Classic Italian pasta with egg sauce and pancetta.",
+      "type": "dinner",
+      "difficulty": "medium",
+      "rating": 4,
+      "prepTime": 10,
+      "cookTime": 15,
+      "ingredients": [
+        { "name": "Spaghetti", "amount": "200g" },
+        { "name": "Eggs", "amount": "2" },
+        { "name": "Pancetta", "amount": "100g" },
+        { "name": "Parmesan", "amount": "50g" }
+      ],
+      "steps": [
+        "Boil the pasta.",
+        "Cook the pancetta.",
+        "Mix eggs and parmesan.",
+        "Combine pasta with egg mixture and pancetta."
+      ],
+      "createdAt": "2025-12-02T10:00:00Z",
+      "updatedAt": "2025-12-02T10:00:00Z"
+    }
+  ]
+}
