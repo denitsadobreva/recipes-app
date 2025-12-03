@@ -1,11 +1,13 @@
-import "./App.css";
 import Header from "./components/Header";
 import RecipeList from "./components/RecipeList";
+import NewRecipe from "./components/NewRecipe";
+import Modal from "./components/Modal";
 import { useState } from "react";
 import { useEffect } from "react";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  const [showNewRecipe, setShowNewRecipe] = useState(false);
 
   useEffect(() => {
     async function fetchRecipes() {
@@ -17,11 +19,20 @@ function App() {
     fetchRecipes();
   }, []);
 
+  const openNewRecipeHandler = () => {
+    setShowNewRecipe(true);
+  };
+
   return (
-    <>
-      <Header />
+    <div className="w-full p-10">
+      {showNewRecipe && (
+        <Modal>
+          <NewRecipe />
+        </Modal>
+      )}
+      <Header onOpenNewRecipe={openNewRecipeHandler} />
       <RecipeList recipes={recipes} />
-    </>
+    </div>
   );
 }
 
