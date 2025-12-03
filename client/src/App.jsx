@@ -23,11 +23,31 @@ function App() {
     setShowNewRecipe(true);
   };
 
+  const closeNewRecipeHandler = () => {
+    setShowNewRecipe(false);
+  };
+
+  const saveNewRecipeHandler = async (newRecipe) => {
+    console.log(newRecipe);
+    const response = await fetch("http://localhost:8080/recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRecipe),
+    });
+    const data = await response.json();
+    setRecipes((prevRecipes) => [...prevRecipes, data.recipe]);
+  };
+
   return (
     <div className="w-full p-10">
       {showNewRecipe && (
         <Modal>
-          <NewRecipe />
+          <NewRecipe
+            onCancel={closeNewRecipeHandler}
+            onSave={saveNewRecipeHandler}
+          />
         </Modal>
       )}
       <Header onOpenNewRecipe={openNewRecipeHandler} />
