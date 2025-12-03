@@ -40,6 +40,15 @@ function App() {
     setRecipes((prevRecipes) => [...prevRecipes, data.recipe]);
   };
 
+  const deleteRecipeHandler = async (id) => {
+    await fetch(`http://localhost:8080/recipes/${id}`, {
+      method: "DELETE",
+    });
+    setRecipes((prevRecipes) =>
+      prevRecipes.filter((recipe) => recipe.id !== id)
+    );
+  };
+
   return (
     <div className="w-full p-10">
       {showNewRecipe && (
@@ -51,7 +60,7 @@ function App() {
         </Modal>
       )}
       <Header onOpenNewRecipe={openNewRecipeHandler} />
-      <RecipeList recipes={recipes} />
+      <RecipeList recipes={recipes} onDelete={deleteRecipeHandler} />
     </div>
   );
 }
