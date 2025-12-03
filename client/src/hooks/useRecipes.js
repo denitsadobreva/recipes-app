@@ -34,5 +34,19 @@ export function useRecipes() {
     );
   };
 
-  return { recipes, addRecipe, deleteRecipe };
+  const updateRecipe = async (id, updatedRecipe) => {
+    const response = await fetch(`http://localhost:8080/recipes/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedRecipe),
+    });
+    const data = await response.json();
+    setRecipes((prevRecipes) =>
+      prevRecipes.map((recipe) => (recipe.id === id ? data.recipe : recipe))
+    );
+  };
+
+  return { recipes, addRecipe, deleteRecipe, updateRecipe };
 }

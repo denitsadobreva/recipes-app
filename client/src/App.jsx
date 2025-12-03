@@ -3,30 +3,29 @@ import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipe";
 import Modal from "./components/Modal";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useRecipes } from "./hooks/useRecipes";
 
 function App() {
-  const { recipes, addRecipe, deleteRecipe } = useRecipes();
+  const { recipes, addRecipe, deleteRecipe, updateRecipe } = useRecipes();
   const [showNewRecipe, setShowNewRecipe] = useState(false);
 
-  const openNewRecipeHandler = () => {
-    setShowNewRecipe(true);
-  };
-
-  const closeNewRecipeHandler = () => {
-    setShowNewRecipe(false);
+  const toggleViewNewRecipe = () => {
+    setShowNewRecipe((prev) => !prev);
   };
 
   return (
     <div className="w-full p-10">
       {showNewRecipe && (
         <Modal>
-          <NewRecipe onCancel={closeNewRecipeHandler} onSave={addRecipe} />
+          <NewRecipe onCancel={toggleViewNewRecipe} onSave={addRecipe} />
         </Modal>
       )}
-      <Header onOpenNewRecipe={openNewRecipeHandler} />
-      <RecipeList recipes={recipes} onDelete={deleteRecipe} />
+      <Header onOpenNewRecipe={toggleViewNewRecipe} />
+      <RecipeList
+        recipes={recipes}
+        onDelete={deleteRecipe}
+        onUpdate={updateRecipe}
+      />
     </div>
   );
 }

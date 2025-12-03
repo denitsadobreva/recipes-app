@@ -55,4 +55,22 @@ app.delete("/recipes/:id", async (req, res) => {
   res.status(200).json({ message: "Deleted recipe." });
 });
 
+app.put("/recipes/:id", async (req, res) => {
+  const existingRecipes = await getStoredRecipes();
+  const recipeData = req.body;
+  const recipeIndex = existingRecipes.findIndex(
+    (recipe) => recipe.id === req.params.id
+  );
+  if (recipeIndex < 0) {
+    return res.status(404).json({ message: "Recipe not found." });
+  }
+  const updatedRecipe = {
+    ...existingRecipes[recipeIndex],
+    ...recipeData,
+  };
+  existingRecipes[recipeIndex] = updatedRecipe;
+  await storeRecipes(existingRecipes);
+  res.status(200).json({ message: "Updated recipe.", recipe: updatedRecipe });
+});
+
 app.listen(8080);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import Recipe from "./Recipe";
 
-export default function RecipeListItem({ recipe, onDelete }) {
+export default function RecipeListItem({ recipe, onDelete, onUpdate }) {
   const [openView, setOpenView] = useState(false);
 
   const toggleView = () => {
@@ -13,7 +13,12 @@ export default function RecipeListItem({ recipe, onDelete }) {
     <>
       {openView && (
         <Modal>
-          <Recipe recipe={recipe} onClose={toggleView} onDelete={onDelete} />
+          <Recipe
+            recipe={recipe}
+            onClose={toggleView}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
+          />
         </Modal>
       )}
       <div className="bg-white rounded-lg shadow-md">
