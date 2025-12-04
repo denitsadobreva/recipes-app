@@ -34,7 +34,7 @@ export default function RecipeListItem({ recipe, onDelete, onUpdate }) {
         <button
           type="button"
           onClick={toggleView}
-          className="mb-4 ml-4 px-2 py-1 bg-blue-500 text-white rounded-lg cursor-pointer"
+          className="mb-4 ml-4 px-2 py-1 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600 active:bg-blue-400"
         >
           View Recipe
         </button>

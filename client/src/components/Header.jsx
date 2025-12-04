@@ -5,7 +5,7 @@ export default function Header({ onOpenNewRecipe }) {
       <button
         onClick={onOpenNewRecipe}
         type="button"
-        className="basis-1/3 lg:basis-1/6 px-6 py-2 bg-blue-500 text-white rounded-lg cursor-pointer"
+        className="basis-1/3 lg:basis-1/6 px-6 py-2 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600 active:bg-blue-400"
       >
         New Recipe
       </button>

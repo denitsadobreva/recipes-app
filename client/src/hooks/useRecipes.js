@@ -22,7 +22,7 @@ export function useRecipes() {
       body: JSON.stringify(newRecipe),
     });
     const data = await response.json();
-    setRecipes((prevRecipes) => [...prevRecipes, data.recipe]);
+    setRecipes((prevRecipes) => [data.recipe, ...prevRecipes]);
   };
 
   const deleteRecipe = async (id) => {

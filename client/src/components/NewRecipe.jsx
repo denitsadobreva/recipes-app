@@ -29,35 +29,52 @@ export default function NewRecipe({ onSave, onCancel }) {
   };
 
   return (
-    <div className="p-4 w-md">
-      <h2>Add New Recipe</h2>
+    <div className="p-4 w-full">
+      <h2 className="text-xl mb-4">Add New Recipe</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <p className="flex flex-col gap-2">
-          <label htmlFor="title">Title:</label>
-          <input type="text" id="title" onChange={handleTitleChange}></input>
+          <label htmlFor="title" className="text-sm text-gray-700">
+            Title:
+          </label>
+          <input
+            type="text"
+            id="title"
+            onChange={handleTitleChange}
+            className="text-gray-900 outline-1 -outline-offset-1 outline-gray-300 rounded-md bg-white px-3 py-1.5 "
+          ></input>
         </p>
         <p className="flex flex-col gap-2">
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description" className="text-sm text-gray-700">
+            Description:
+          </label>
           <textarea
             id="description"
             onChange={handleDescriptionChange}
+            className="text-gray-900 outline-1 -outline-offset-1 outline-gray-300 rounded-md bg-white px-3 py-1.5 "
           ></textarea>
         </p>
         <p className="flex flex-col gap-2">
-          <label htmlFor="image">Image URL:</label>
-          <input type="text" id="image" onChange={handleImageChange}></input>
+          <label htmlFor="image" className="text-sm text-gray-700">
+            Image URL:
+          </label>
+          <input
+            type="text"
+            id="image"
+            onChange={handleImageChange}
+            className="text-gray-900 outline-1 -outline-offset-1 outline-gray-300 rounded-md bg-white px-3 py-1.5 "
+          ></input>
         </p>
-        <div className="flex">
+        <div className="flex justify-end gap-4">
           <button
             onClick={onCancel}
             type="button"
-            className="px-4 py-2 bg-gray-500 text-white rounded-lg cursor-pointer mr-4"
+            className="px-4 py-2 bg-gray-500 text-white rounded-lg cursor-pointer hover:bg-gray-600 active:bg-gray-400"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-6 py-2 bg-green-500 text-white rounded-lg cursor-pointer"
+            className="px-6 py-2 bg-green-500 text-white rounded-lg cursor-pointer hover:bg-green-600 active:bg-green-400"
           >
             Save
           </button>

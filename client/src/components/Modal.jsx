@@ -7,12 +7,16 @@ export default function Modal({ children }) {
           top-1/2 left-1/2 
           -translate-x-1/2 -translate-y-1/2
           border-0 
-          rounded-[6px] 
+          rounded-lg 
           shadow-[0_2px_8px_rgba(0,0,0,0.2)] 
           p-0 
           overflow-hidden 
           bg-white 
-          z-20"
+          z-20
+          size-screen 
+          md:w-2xl 
+          md:h-auto
+        "
       >
         {children}
       </div>
